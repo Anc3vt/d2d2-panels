@@ -62,13 +62,14 @@ public class DropList extends Component {
 		
 		touchButton = new TouchButton(true) {
 			@Override
-			public void onTouchDown(int x, int y) {
+			public boolean onTouchDown(int x, int y) {
 				if(opened) {
 					openRect.getParent().remove(openRect);
 					opened = false;
 					onClose();
 				} else
 				open();
+				return false;
 			}
 		};
 		add(touchButton);
@@ -147,11 +148,12 @@ public class DropList extends Component {
 			
 			final TouchButton button = new TouchButton(true) {
 				@Override
-				public void onTouchDown(int x, int y) {
+				public boolean onTouchDown(int x, int y) {
 					select(item.getKey());
 					openRect.getParent().remove(openRect);
 					opened = false;
 					onClose();
+					return false;
 				}
 			};
 			

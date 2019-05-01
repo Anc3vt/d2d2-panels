@@ -47,7 +47,7 @@ public class Checkbox extends Component {
 		
 		touchButton = new TouchButton() {
 			@Override
-			public void onTouchDown(int x, int y) {
+			public boolean onTouchDown(int x, int y) {
 				setChecked(!isChecked());
 				
 				Focus.setFocusedComponent(Checkbox.this);
@@ -57,9 +57,7 @@ public class Checkbox extends Component {
 				} else {
 					Checkbox.this.remove(boxInner);
 				}
-				
-				
-				super.onTouchDown(x, y);
+				return super.onTouchDown(x, y);
 			}
 		};
 		touchButton.setEnabled(true);

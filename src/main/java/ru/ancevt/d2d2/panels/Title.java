@@ -68,19 +68,21 @@ public class Title extends Component {
 			private float oldX, oldY;
 			
 			@Override
-			public void onTouchDown(int x, int y) {
+			public boolean onTouchDown(int x, int y) {
 				super.onTouchDown(x, y);
 				this.oldX = x;
 				this.oldY = y;
+				return false;
 			}
 			
 			@Override
-			public void onTouchDrag(int x, int y) {
+			public boolean onTouchDrag(int x, int y) {
 				super.onTouchDrag(x, y);
 				final float diffX = x - oldX;
 				final float diffY = y - oldY;
 				Title.this.owner.moveX(diffX);
 				Title.this.owner.moveY(diffY);
+				return false;
 			}
 		};
 		titleTouchButton.setEnabled(true);

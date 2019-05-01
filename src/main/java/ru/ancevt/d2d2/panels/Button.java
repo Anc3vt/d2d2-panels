@@ -30,7 +30,7 @@ public class Button extends Panel {
 		
 		touchButton = new TouchButton() {
 			@Override
-			public void onTouchDown(int x, int y) {
+			public boolean onTouchDown(int x, int y) {
 				Focus.setFocusedComponent(Button.this);
 				
 				borderLeft.setColor(BORDER_COLOR_2);
@@ -40,22 +40,24 @@ public class Button extends Panel {
 				label.move(1, 1);
 				pressed = true;
 				super.onTouchDown(x, y);
+				return false;
 			}
 			
 			@Override
-			public void onTouchUp(int x, int y, boolean onArea) {
+			public boolean onTouchUp(int x, int y, boolean onArea) {
 				borderLeft.setColor(BORDER_COLOR_1);
 				borderRight.setColor(BORDER_COLOR_2);
 				borderTop.setColor(BORDER_COLOR_1);
 				borderBottom.setColor(BORDER_COLOR_2);
 				label.move(-1, -1);
 				
-				if(!pressed) return;
+				if(!pressed) return false ;
 				
 				onButtonPressed();
 				
 				pressed = false;
 				super.onTouchUp(x, y, onArea);
+				return false;
 			}
 		};
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);

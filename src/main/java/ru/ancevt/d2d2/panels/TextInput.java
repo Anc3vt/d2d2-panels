@@ -42,9 +42,9 @@ public class TextInput extends Component implements RootKeyListener {
 		
 		touchButton = new TouchButton() {
 			@Override
-			public void onTouchDown(int x, int y) {
+			public boolean onTouchDown(int x, int y) {
 				onTouch();
-				super.onTouchDown(x, y);
+				return super.onTouchDown(x, y);
 			}
 		};
 		
